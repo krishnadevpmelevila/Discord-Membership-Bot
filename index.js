@@ -25,7 +25,7 @@ bot.on('guildMemberAdd', (member) => {
 bot.on('guildMemberAdd', (member) => {
     member.roles.add('908010320675635200');
     const channelId = '909346460603125800'; // The Channel ID you just copied
-    const welcomeMessage = `Hey <@${member.user.id}> ! Welcome to our community! Please enter the verification code recieved on your email at <#907616103071641681> to get full access`;
+    const welcomeMessage = `Hey <@${member.user.id}> ! Welcome to our community! Please enter the verification code recieved on your email at <#909278509552267274> to get full access`;
     member.guild.channels.fetch(channelId).then(channel => {
         channel.send(welcomeMessage)
     });

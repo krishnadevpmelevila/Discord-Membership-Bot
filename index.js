@@ -32,7 +32,7 @@ bot.on('guildMemberAdd', (member) => {
 });
 bot.on('messageCreate', (message) => {
     if (message.author.id != '907633615599452160' && message.author.id!='707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id!='909278509552267274') {
-        axios.post('http://localhost:3000/login', {
+        axios.post(process.env.API_URL+'/login', {
 
 
             email: process.env.USER_NAME,
@@ -67,7 +67,7 @@ bot.on('messageCreate', (message) => {
     if (message.channelId == '909278509552267274' && message.author.id != '907633615599452160' && message.content.toLowerCase() != 'clearchat') {
 
 
-        axios.post('http://localhost:3000/login', {
+        axios.post(process.env.API_URL+'/login', {
 
 
             email: process.env.USER_NAME,
@@ -76,7 +76,7 @@ bot.on('messageCreate', (message) => {
 
         }).then(function (response) {
             var token = response.data.token
-            axios.get('http://localhost:3000/data', {
+            axios.get(process.env.API_URL+'/data', {
                 headers: {
                     'x-access-token': token
                 }
@@ -101,7 +101,7 @@ bot.on('messageCreate', (message) => {
                     }
                 }
                 if (hasMatch) {
-                    axios.get('http://localhost:3000/activate/' + user._id, {
+                    axios.get(process.env.API_URL+'/activate/' + user._id, {
                         headers: {
                             'x-access-token': token
                         }

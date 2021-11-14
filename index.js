@@ -24,7 +24,7 @@ bot.on('guildMemberAdd', (member) => {
 // Welcome Message
 bot.on('guildMemberAdd', (member) => {
     member.roles.add('908010320675635200');
-    const channelId = '907620100750843925'; // The Channel ID you just copied
+    const channelId = '909346460603125800'; // The Channel ID you just copied
     const welcomeMessage = `Hey <@${member.user.id}> ! Welcome to our community! Please enter the verification code recieved on your email at <#907616103071641681> to get full access`;
     member.guild.channels.fetch(channelId).then(channel => {
         channel.send(welcomeMessage)
@@ -32,6 +32,7 @@ bot.on('guildMemberAdd', (member) => {
 });
 bot.on('messageCreate', (message) => {
     if (message.author.id != '907633615599452160' && message.author.id!='707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id!='909278509552267274') {
+        console.log("ok");
         axios.post(process.env.API_URL+'/login', {
 
 
@@ -109,6 +110,7 @@ bot.on('messageCreate', (message) => {
                         usersname = user.name
                         message.reply(usersname + ', You have been verified!')
                         //  add role
+                        console.log(message.content);
                         message.member.roles.add('908013072428445766');
                         message.member.roles.remove('908010320675635200');
                     }).catch(function (error) {

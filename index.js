@@ -46,6 +46,7 @@ bot.on('messageCreate', (message) => {
                     'x-access-token': response.data.token
                 }
             }).then(function (response) {
+                hasMatch = false;
                 var data = response.data
                 for (var index = 0; index < data.length; ++index) {
 

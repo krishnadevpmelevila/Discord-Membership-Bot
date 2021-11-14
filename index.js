@@ -30,23 +30,60 @@ bot.on('guildMemberAdd', (member) => {
         channel.send(welcomeMessage)
     });
 });
+// bot.on('messageCreate', (message) => {
+//     if (message.author.id != '907633615599452160' && message.author.id != '707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id != '909278509552267274') {
+//         console.log("ok");
+//         axios.post(process.env.API_URL + '/login', {
+
+
+//             email: process.env.USER_NAME,
+//             password: process.env.PASS
+
+
+//         }).then(
+//             axios.get(process.env.API_URL + '/data', {
+//                 headers: {
+//                     'x-access-token': response.data.token
+//                 }
+//             }).then(function (response) {
+//                 var data = response.data
+//                 for (var index = 0; index < data.length; ++index) {
+
+//                     var user = data[index];
+//                     console.log(user.email);
+//                     if (user.email == message.client.user.email) {
+//                         message.delete();
+//                         message.member.roles.add('908010320675635200');
+//                         message.member.roles.remove('908013072428445766');
+//                         message.author.send(`<@${message.author.id}> Please verify your account first. Check your email for the verification code.  If you are once verified and now seeing this message, Then it seems the admin had deactivated your membership. Check the reason with <@707101869964656723>`)
+
+//                     }
+//                 }
+//             })
+
+
+
+//         )
+//     }
+// })
+
 
 bot.on('messageCreate', (message) => {
-    if(message.author.id=='707101869964656723'){
+    if (message.author.id == '707101869964656723') {
         if (message.content.toLowerCase().startsWith("clearchat")) {
             async function clear() {
                 message.delete();
                 message.channel.bulkDelete(100);
-    
+
             }
             clear();
         }
     }
-    
+
     if (message.channelId == '909278509552267274' && message.author.id != '907633615599452160' && message.content.toLowerCase() != 'clearchat') {
 
 
-        axios.post(process.env.API_URL+'/login', {
+        axios.post(process.env.API_URL + '/login', {
 
 
             email: process.env.USER_NAME,
@@ -55,7 +92,7 @@ bot.on('messageCreate', (message) => {
 
         }).then(function (response) {
             var token = response.data.token
-            axios.get(process.env.API_URL+'/data', {
+            axios.get(process.env.API_URL + '/data', {
                 headers: {
                     'x-access-token': token
                 }
@@ -80,28 +117,29 @@ bot.on('messageCreate', (message) => {
                     }
                 }
                 if (hasMatch) {
-                    axios.get(process.env.API_URL+'/activate/' + user._id, {
+                    axios.get(process.env.API_URL + '/activate/' + user._id, {
                         headers: {
                             'x-access-token': token
                         }
                     }).then(function (response) {
                         usersname = user.name
-                        message.reply(usersname + ', You have been verified!')
-                        //  add role
-                        console.log(message.content);
-                        message.member.roles.add('908013072428445766');
-                        message.member.roles.remove('908010320675635200');
-                    }).catch(function (error) {
-                        console.log(error);
-                    });
+                        axios.get(process.env.API_URL + '/add/' + user._id + '/' + message.author.id, {
+                            headers: {
+                                'x-access-token': token
+                            }
+                        }).then(function (response) {
+                            message.reply(usersname + ', You have been verified!')
+                            //  add role
+                            console.log(message.content);
+                            message.member.roles.add('908013072428445766');
+                            message.member.roles.remove('908010320675635200');
+                        }
+                        )
 
-                } else {
-                    message.channel.send(`<@${message.author.id}> Wrong code! Contact <@707101869964656723> For Help!`)
+                    })
                 }
 
-
-            }
-            ).catch(function (error) {
+            }).catch(function (error) {
 
                 console.log(error);
             }

@@ -31,7 +31,7 @@ bot.on('guildMemberAdd', (member) => {
     });
 });
 bot.on('messageCreate', (message) => {
-    if (message.author.id != '907633615599452160' && message.author.id != '707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id != '909278509552267274') {
+    if (message.author.id != '907633615599452160'&&message.author.id !='270904126974590976' && message.author.id != '707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id != '909278509552267274') {
         console.log("ok");
         axios.post(process.env.API_URL + '/login', {
 
@@ -76,7 +76,7 @@ bot.on('messageCreate', (message) => {
 
 
 bot.on('messageCreate', (message) => {
-    if (message.author.id == '707101869964656723') {
+    if (message.author.id == '707101869964656723',message.author.id !='270904126974590976') {
         if (message.content.toLowerCase().startsWith("clearchat")) {
             async function clear() {
                 
@@ -88,7 +88,7 @@ bot.on('messageCreate', (message) => {
         }
     }
 
-    if (message.channelId == '909278509552267274' && message.author.id != '907633615599452160' && message.content.toLowerCase() != 'clearchat') {
+    if (message.channelId == '909278509552267274' && message.author.id != '907633615599452160'&&message.author.id !='270904126974590976' && message.content.toLowerCase() != 'clearchat') {
 
 
         axios.post(process.env.API_URL + '/login', {

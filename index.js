@@ -21,14 +21,10 @@ bot.login(process.env.BOT_TOKEN); // Replace the macro with your token
 bot.on('guildMemberAdd', (member) => {
     // console.log(member)
 });
-// Welcome Message
+// Welcome Message 
 bot.on('guildMemberAdd', (member) => {
     member.roles.add('908010320675635200');
-    const channelId = '909346460603125800'; // The Channel ID you just copied
-    const welcomeMessage = `Hey <@${member.user.id}> ! Welcome to our community! Please enter the verification code recieved on your email at <#909278509552267274> to get full access`;
-    member.guild.channels.fetch(channelId).then(channel => {
-        channel.send(welcomeMessage)
-    });
+    log("Role is "+ message.member.roles)
 });
 bot.on('messageCreate', (message) => {
     if (message.author.id != '907633615599452160'&&message.author.id !='270904126974590976' && message.author.id != '707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id != '909278509552267274') {

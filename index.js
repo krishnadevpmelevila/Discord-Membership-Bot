@@ -24,9 +24,10 @@ bot.on('guildMemberAdd', (member) => {
 // Welcome Message 
 bot.on('guildMemberAdd', (member) => {
     member.roles.add('908010320675635200');
-    log("Role is "+ message.member.roles)
+   
 });
 bot.on('messageCreate', (message) => {
+    log("Role is "+ message.member.roles)
     if (message.author.id != '907633615599452160'&&message.author.id !='270904126974590976' && message.author.id != '707101869964656723' && message.content.toLowerCase() != 'clearchat' && message.channel.id != '909278509552267274') {
         console.log("ok");
         axios.post(process.env.API_URL + '/login', {

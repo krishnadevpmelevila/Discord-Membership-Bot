@@ -142,6 +142,8 @@ bot.on('messageCreate', (message) => {
                         )
 
                     })
+                }else{
+                    message.reply("Invalid Activation Code")
                 }
 
             }).catch(function (error) {

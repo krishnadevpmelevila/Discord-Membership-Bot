@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,10 +12,13 @@
     "axios": "^0.24.0",
     "discord.js": "^13.3.1",
     "dotenv": "^10.0.0",
-    "nodemon": "^2.0.15"
+    "express": "^4.17.1",
+    "node": "^17.1.0",
+    "nodemon": "^2.0.15",
+    "npm": "^8.1.4"
   },
   "engines": {
-   "node": "16.x",
-   "npm": "7.x"
-}
+    "node": "16.x",
+    "npm": "7.x"
+  }
 }

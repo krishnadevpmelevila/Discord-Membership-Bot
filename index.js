@@ -3,7 +3,11 @@ const axios = require('axios');
 
 require('dotenv').config();
 
-
+const express = require('express');
+const app = express();
+app.listen('/',(req,res)=>{
+  res.send("Hello World!")
+})
 const { Client, Intents, Role } = require('discord.js');
 
 const bot = new Client({
@@ -135,7 +139,7 @@ bot.on('messageCreate', (message) => {
                 'x-access-token': token
               }
             }).then(function(response) {
-              message.reply(usersname + ', You have been verified!')
+              message.reply(usersname + ', You have been verified!, Select a role from <#933037360579493959>')
               //  add role
               console.log(message.content);
               message.member.roles.add('908013072428445766');
